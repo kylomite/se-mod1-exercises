@@ -1,23 +1,25 @@
-RSpec.describe 'ints and floats' do
+require 'rspec'
+
+Rspec.describe 'ints and floats' do
   it 'test 1' do
     lucky = 7
     unlucky = 13
     # Using the two variables defined above,
     # add the lucky number and the unlucky number
-    sum = ________
+    sum = lucky + unlucky
     expect(sum).to eq(20)
   end
 
-  xit 'test 2' do
+  'test 2' do
     lucky = 7
     unlucky = 13
     # Using the two variables defined above,
     # subtract the unlucky from the lucky
-    difference = ________
+    difference = unlucky - lucky
     expect(difference).to eq(-6)
   end
 
-  xit 'test 3' do
+  'test 3' do
     lucky = 7
     unlucky = 13
     # Using the two variables defined above,
@@ -27,7 +29,7 @@ RSpec.describe 'ints and floats' do
     expect(quotient).to eq(1)
   end
 
-  xit 'test 4' do
+  'test 4' do
     lucky = 7
     unlucky = 13
     # Using the two variables defined above,
@@ -36,7 +38,7 @@ RSpec.describe 'ints and floats' do
     expect(quotient).to eq(1.8571428571428572)
   end
 
-  xit 'test 5' do
+  'test 5' do
     lucky = 7
     unlucky = 13
     # Using the two variables defined above,
@@ -45,7 +47,7 @@ RSpec.describe 'ints and floats' do
     expect(remainder).to eq(6)
   end
 
-  xit 'test 6' do
+  'test 6' do
     lucky = 7
     # Using the variable defined above,
     # find out if the lucky number is even
@@ -53,7 +55,7 @@ RSpec.describe 'ints and floats' do
     expect(even).to eq(false)
   end
 
-  xit 'test 7' do
+  'test 7' do
     pi = 3.14
     # Using the variable defined above,
     # round the number to the nearest whole number
@@ -61,7 +63,7 @@ RSpec.describe 'ints and floats' do
     expect(rounded).to eq(3)
   end
 
-  xit 'test 8' do
+  'test 8' do
     pi = 3.14
     # Using the variable defined above,
     # round the number to one decimal place
@@ -69,7 +71,7 @@ RSpec.describe 'ints and floats' do
     expect(rounded).to eq(3.1)
   end
 
-  xit 'test 9' do
+  'test 9' do
     pi = 3.14
     # Using the variable defined above,
     # round the number to the next highest whole number
