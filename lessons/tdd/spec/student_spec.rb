@@ -48,9 +48,16 @@ RSpec.describe Student do
     
     it 'should allow mod promotion' do
         student = Student.new("Sophocles", 1)
-        require'pry';binding.pry
         student.promote
 
         expect(student.say_mod).to eq "I'm in Mod 2"
+
+        student.promote
+
+        expect(student.say_mod).to eq "I'm in Mod 3"
+
+        student.promote
+
+        expect(student.say_mod).to eq "I'm in Mod 4"
     end
 end
