@@ -2,6 +2,7 @@ require 'rspec'
 require './lib/wizard'
 
 RSpec.describe Wizard do
+  
   it 'has a name' do
     wizard = Wizard.new('Eric')
     expect(wizard.name).to eq('Eric')
@@ -34,19 +35,31 @@ RSpec.describe Wizard do
 
   it 'starts rested' do
     # create wizard
+    wizard = Wizard.new('Harry')
     # .rested? returns true
+    expect(wizard.rested?).to eql true
   end
 
   it 'can cast spells' do
     # create wizard
+    wizard = Wizard.new('Harry')
     # .cast returns "MAGIC MISSILE!"
+    expect(wizard.cast).to eql "MAGIC MISSILE!"
   end
 
   it 'gets tired after casting three spells' do
     # create wizard
+    wizard = Wizard.new('Harry')
     # casts spell twice
+    wizard.cast
+    wizard.cast
     # check if wizard is rested
+    expect(wizard.rested?).to eql true
     # casts spell
+    require'pry';binding.pry
+    wizard.cast
     # check wizard is not rested
+    expect(wizard.rested?).to eql false
+    expect(wizard.cast).to eql "I am too tired"
   end
 end
