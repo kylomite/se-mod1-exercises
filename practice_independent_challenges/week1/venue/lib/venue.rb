@@ -21,4 +21,20 @@ class Venue
         }
         output
     end
+
+    def over_capacity?
+        if self.patrons.length > self.capacity
+            true
+        else
+            false
+        end
+
+    end
+
+    def kick_out
+        
+        until self.patrons.length == self.capacity
+            self.patrons.pop
+        end
+    end
 end
