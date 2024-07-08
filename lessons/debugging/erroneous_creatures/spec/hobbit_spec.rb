@@ -1,4 +1,4 @@
-require './erroneous_creatures/lib/hobbit'
+require './lib/hobbit'
 
 RSpec.describe Hobbit do
   it "has a name" do

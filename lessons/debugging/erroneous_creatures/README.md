@@ -19,16 +19,16 @@ There is no additional setup. Make sure first change into the Erroneous Creates 
 
 ## Suggested Order
 
-* `unicorn_spec.rb`
-* `vampire_spec.rb`
-* `dragon_spec.rb`
-* `hobbit_spec.rb`
-* `pirate_spec.rb`
-* `wizard_spec.rb`
-* `medusa_spec.rb`
-* `werewolf_spec.rb`
+* `unicorn_spec.rb`✔ 
+* `vampire_spec.rb`✔
+* `dragon_spec.rb`✔
+* `hobbit_spec.rb`✔
+* `pirate_spec.rb`✔
+* `wizard_spec.rb`✔
+* `medusa_spec.rb`✔
+* `werewolf_spec.rb`✔
 * `centaur_spec.rb`
-* `hippogriff_spec.rb`
+* `hippogriff_spec.rb`✔
 
 ### Common Mistakes
 
