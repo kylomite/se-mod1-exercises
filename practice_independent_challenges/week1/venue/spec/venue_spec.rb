@@ -64,7 +64,6 @@ describe Venue do
 
       venue.add_patron('Shug Night')
       venue.add_patron('James Charles')
-      #require'pry';binding.pry
       expect(venue.over_capacity?).to eq true
     end
   end
