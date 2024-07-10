@@ -56,11 +56,14 @@ RSpec.describe Werewolf do
     werewolf = Werewolf.new('David', 'London')
 
     expect(werewolf.hungry?).to be false
-    
+
   end
 
   it 'becomes hungry after changing to a werewolf' do
-    # your code here
+    werewolf = Werewolf.new('David', 'London')
+    werewolf.change!
+
+    expect(werewolf.hungry?).to be true
   end
 
   class Victim

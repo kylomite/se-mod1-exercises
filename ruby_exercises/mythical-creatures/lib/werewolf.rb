@@ -26,6 +26,7 @@ class Werewolf
         if @human == true
             @human = false
             @wolf = true
+            @hungry = true
         else 
             @human = true
             @wolf = false
