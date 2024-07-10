@@ -49,12 +49,14 @@ RSpec.describe Werewolf do
 
     werewolf.change!
     werewolf.change!
-    # require'pry';binding.pry
     expect(werewolf.wolf?).to be true
   end
 
   it 'is not hungry by default' do
-    # your code here
+    werewolf = Werewolf.new('David', 'London')
+
+    expect(werewolf.hungry?).to be false
+    
   end
 
   it 'becomes hungry after changing to a werewolf' do
