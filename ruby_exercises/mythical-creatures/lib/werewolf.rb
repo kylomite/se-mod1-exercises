@@ -3,7 +3,8 @@
 class Werewolf
     attr_reader :name,
                 :location,
-                :consume
+                :consume,
+                :victims
 
     attr_accessor :human,
                   :wolf,
@@ -15,6 +16,7 @@ class Werewolf
         @human = true
         @wolf = false
         @hungry = false
+        @victims = []
     end
 
     def human?
@@ -41,7 +43,13 @@ class Werewolf
     end
 
     def consume(victim)
-        victim.status = :dead
+        if @human == true
+            return "There's a time and place for everything, but not now."
+        else
+            @victims.push(victim)
+            @hungry = false
+            victim.status = :dead
+        end
     end
 
 end

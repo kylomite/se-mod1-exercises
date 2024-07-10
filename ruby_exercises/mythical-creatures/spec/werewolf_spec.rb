@@ -77,22 +77,46 @@ RSpec.describe Werewolf do
   it 'consumes a victim' do
     werewolf = Werewolf.new('David', 'London')
     feeble_old_man = Victim.new
+    werewolf.change!
     
     werewolf.consume(feeble_old_man)
-    #
-    expect(feeble_old_man.status).to eq :dead
+
+    expect(werewolf.victims).to include feeble_old_man
   end
 
   it 'cannot consume a victim if it is in human form' do
-    # your code here
+    werewolf = Werewolf.new('David', 'London')
+    feeble_old_man = Victim.new
+
+    werewolf.consume(feeble_old_man)
+
+    expect(werewolf.consume(feeble_old_man)).to eq "There's a time and place for everything, but not now."
+    expect(feeble_old_man.status).to eq :alive
+
+    werewolf.change!
+    werewolf.consume(feeble_old_man)
+    # require'pry';binding.pry
+    expect(feeble_old_man.status).to eq :dead
   end
 
   it 'a werewolf that has consumed a human being is no longer hungry' do
-    # your code here
+    werewolf = Werewolf.new('David', 'London')
+    feeble_old_man = Victim.new
+    werewolf.change!
+    
+    werewolf.consume(feeble_old_man)
+
+    expect(werewolf.hungry). to be false
   end
 
   it 'a werewolf who has consumed a victim makes the victim dead' do
-    # your code here
+    werewolf = Werewolf.new('David', 'London')
+    feeble_old_man = Victim.new
+    werewolf.change!
+    
+    werewolf.consume(feeble_old_man)
+
+    expect(feeble_old_man.status).to eq :dead
   end
 
 end
