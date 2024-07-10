@@ -1,6 +1,10 @@
 require 'rspec'
 require './lib/werewolf'
 
+RSpec.configure do |config|
+  config.formatter = :documentation
+end
+
 RSpec.describe Werewolf do
   it 'has a name' do
     werewolf = Werewolf.new('David')
@@ -45,7 +49,7 @@ RSpec.describe Werewolf do
 
     werewolf.change!
     werewolf.change!
-
+    # require'pry';binding.pry
     expect(werewolf.wolf?).to be true
   end
 
