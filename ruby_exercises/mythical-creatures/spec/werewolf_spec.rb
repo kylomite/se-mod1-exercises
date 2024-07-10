@@ -75,7 +75,12 @@ RSpec.describe Werewolf do
   end
 
   it 'consumes a victim' do
-    # your code here
+    werewolf = Werewolf.new('David', 'London')
+    feeble_old_man = Victim.new
+    
+    werewolf.consume(feeble_old_man)
+    #
+    expect(feeble_old_man.status).to eq :dead
   end
 
   it 'cannot consume a victim if it is in human form' do

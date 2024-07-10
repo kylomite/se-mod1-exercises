@@ -1,6 +1,9 @@
+#require './spec/werewolf_spec'
+
 class Werewolf
     attr_reader :name,
-                :location
+                :location,
+                :consume
 
     attr_accessor :human,
                   :wolf,
@@ -35,6 +38,10 @@ class Werewolf
 
     def hungry?
         @hungry = hungry
+    end
+
+    def consume(victim)
+        victim.status = :dead
     end
 
 end
