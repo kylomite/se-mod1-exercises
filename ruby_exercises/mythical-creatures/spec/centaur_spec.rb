@@ -69,6 +69,7 @@ RSpec.describe Centaur do
 
   it 'can sleep when laying down' do
     centaur = Centaur.new('George', 'Palomino')
+    #require'pry';binding.pry
     centaur.lay_down
     expect(centaur.sleep).to_not eq('NO!')
   end
