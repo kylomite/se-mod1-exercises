@@ -7,7 +7,7 @@ Suggested Order:
 * map_pattern_spec.rb✅
 * find_pattern_spec.rb✅
 * select_pattern_spec.rb✅
-* count_pattern_spec.rb
+* count_pattern_spec.rb✅
 * all_pattern_spec.rb
 * max_and_min_by_pattern_spec.rb
 * inject_pattern_spec.rb
