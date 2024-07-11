@@ -69,7 +69,7 @@ Consider working through the exercises in this order:
 
 * `map`✅
 * `select`✅
-* `find` (aka `detect`)
+* `find` (aka `detect`)✅
 * `sort_by`
 * `count`
 * `reject`
