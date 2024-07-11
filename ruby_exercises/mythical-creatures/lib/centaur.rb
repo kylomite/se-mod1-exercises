@@ -6,11 +6,12 @@ class Centaur
                 :run,
                 :sleep,
                 :laying,
-                :standing
-    
-    attr_accessor :tire,
-                  :laydown,
-                  :stand_up
+                :standing,
+                :stand_up,
+                :laydown,
+                :tire,
+                :drink_potion,
+                :sick
 
     def initialize(name, breed)
         @name = name
@@ -19,6 +20,7 @@ class Centaur
         @standing = true
         @tire = 0
         @laying = false
+        @sick = false
     end
 
     def shoot
@@ -74,5 +76,22 @@ class Centaur
     def stand_up
         @standing = true
         @laying = false
+    end
+
+    def drink_potion
+        if @laying == true
+            "NO!"
+        else
+            if @tire ==  0
+                @sick = true
+                "BLEH I'm sick now, this is just great..."
+            else
+                @tire = 0
+            end
+        end
+    end
+
+    def sick?
+        @sick
     end
 end
