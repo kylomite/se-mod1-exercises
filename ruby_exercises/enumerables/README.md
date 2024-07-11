@@ -67,8 +67,8 @@ $ rspec exercises_1/spec/map_spec.rb
 
 Consider working through the exercises in this order:
 
-* `map`
-* `select`
+* `map`✅
+* `select`✅
 * `find` (aka `detect`)
 * `sort_by`
 * `count`
