@@ -1,6 +1,10 @@
 require './spec/spec_helper'
 require './lib/ogre'
 
+RSpec.configure do |config|
+  config.formatter = :documentation
+  end
+
 RSpec.describe Ogre do
   it 'has a name' do
     ogre = Ogre.new('Brak')
@@ -31,7 +35,7 @@ RSpec.describe Ogre do
   it 'is noticed by humans every third encounter' do
     ogre = Ogre.new('Brak')
     human = Human.new
-
+    #require'pry';binding.pry
     ogre.encounter(human)
     ogre.encounter(human)
     expect(human.notices_ogre?).to be false
@@ -79,7 +83,7 @@ RSpec.describe Ogre do
 
     6.times { ogre.encounter(human) }
 
-    expect(ogre.encounter_counter).to eq(6)
+    expect(human.encounter_counter).to eq(6)
     expect(ogre.swings).to eq(2)
     expect(human.knocked_out?).to be true
   end
