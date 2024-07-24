@@ -9,7 +9,7 @@ RSpec.describe Dock do
         @dock = Dock.new("Dock A", 4)
         @kayak_1 = Boat.new(:kayak, 20)
         @kayak_2 = Boat.new(:kayak, 20)
-        @Going_Merrry = Boat.new(:caravel, 2000)
+        @Going_Merry = Boat.new(:caravel, 2000)
         @Luffy = Renter.new("Monkey D Luffy", "1738173817381738")
         @Zoro = Renter.new("Roanoa Zoro", "2407240724072407")
 
@@ -52,7 +52,7 @@ RSpec.describe Dock do
         it 'allows one renter to rent multiple boats' do
             @dock.rent(@kayak_1, @Zoro)
             @dock.rent(@kayak_2, @Zoro)
-            @dock.rent(@Going_Merrry, @Luffy)
+            @dock.rent(@Going_Merry, @Luffy)
 
             expect(@dock.rental_log.keys.length).to eq (3)
         end
@@ -68,21 +68,21 @@ RSpec.describe Dock do
 
         it 'shows the renters card number as a KVP'  do
             @dock.rent(@kayak_1, @Luffy)
-            @dock.rent(@Going_Merrry, @Zoro)
+            @dock.rent(@Going_Merry, @Zoro)
             expect(@dock.charge(@kayak_1)[:card_number]).to eq ("1738173817381738")
-            expect(@dock.charge(@Going_Merrry)[:card_number]).to eq ("2407240724072407")
+            expect(@dock.charge(@Going_Merry)[:card_number]).to eq ("2407240724072407")
         end
 
         it 'shows the amount that should be charged as a KVP'  do
             @dock.rent(@kayak_1, @Luffy)
-            @dock.rent(@Going_Merrry, @Zoro)
+            @dock.rent(@Going_Merry, @Zoro)
             expect(@dock.charge(@kayak_1)[:amount]).to eq (0)
-            expect(@dock.charge(@Going_Merrry)[:amount]).to eq (0)
+            expect(@dock.charge(@Going_Merry)[:amount]).to eq (0)
 
             @kayak_1.add_hour
-            @Going_Merrry.add_hour
+            @Going_Merry.add_hour
             expect(@dock.charge(@kayak_1)[:amount]).to eq (20)
-            expect(@dock.charge(@Going_Merrry)[:amount]).to eq (2000)
+            expect(@dock.charge(@Going_Merry)[:amount]).to eq (2000)
         end
      end
         
@@ -90,17 +90,17 @@ RSpec.describe Dock do
         it 'calculates amount value based on rental price and time rented' do
             @dock.rent(@kayak_1, @Luffy)
             @kayak_1.add_hour
-            @dock.rent(@Going_Merrry, @Zoro)
-            @Going_Merrry.add_hour
+            @dock.rent(@Going_Merry, @Zoro)
+            @Going_Merry.add_hour
 
             expect(@dock.calculate_total(@kayak_1)).to eq (20)
-            expect(@dock.calculate_total(@Going_Merrry)).to eq (2000)
+            expect(@dock.calculate_total(@Going_Merry)).to eq (2000)
 
             @kayak_1.add_hour
-            @Going_Merrry.add_hour
+            @Going_Merry.add_hour
 
             expect(@dock.calculate_total(@kayak_1)).to eq (40)
-            expect(@dock.calculate_total(@Going_Merrry)).to eq (4000)
+            expect(@dock.calculate_total(@Going_Merry)).to eq (4000)
         end
         
         it 'will not produce an amount higher than whats possible based on the docks max_rental_time' do
@@ -112,6 +112,17 @@ RSpec.describe Dock do
             @kayak_1.add_hour
 
             expect(@dock.calculate_total(@kayak_1)).to eq (80)
+        end
+    end
+
+    describe '#return()' do
+        it 'will update the rental_log removing the specified boat from the list' do
+            @dock.rent(@kayak_1, @Luffy)
+            @dock.rent(@Going_Merry, @Zoro)
+            expect(@dock.rental_log.keys.length).to eq (2)
+            @dock.return(@Going_Merry)
+            
+            expect(@dock.rental_log.keys.length).to eq (1)
         end
     end
 end
