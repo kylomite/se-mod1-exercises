@@ -160,7 +160,7 @@ RSpec.describe Dock do
             @dock.return(@kayak_1)
             @dock.return(@Going_Merry)
 
-            expect(@dock.revenue).to eq (6800)
+            expect(@dock.revenue).to eq (6080)
         end
     end
 end
