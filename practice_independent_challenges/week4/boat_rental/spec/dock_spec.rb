@@ -9,6 +9,7 @@ RSpec.describe Dock do
         @dock = Dock.new("Dock A", 4)
         @kayak_1 = Boat.new(:kayak, 20)
         @kayak_2 = Boat.new(:kayak, 20)
+        @Going_Merrry = Boat.new(:caravel, 2000)
         @Luffy = Renter.new("Monkey D Luffy", "1738173817381738")
         @Zoro = Renter.new("Roanoa Zoro", "2407240724072407")
 
@@ -47,6 +48,13 @@ RSpec.describe Dock do
             @dock.rent(@kayak_2, @Zoro)
             expect(@dock.rental_log.empty?).to eq (false)
             expect(@dock.rental_log.keys.length).to eq (2)
+        end
+        it 'allows one renter to rent multiple boats' do
+            @dock.rent(@kayak_1, @Zoro)
+            @dock.rent(@kayak_2, @Zoro)
+            @dock.rent(@Going_Merrry, @Luffy)
+
+            expect(@dock.rental_log.keys.length).to eq (3)
         end
      
      end
