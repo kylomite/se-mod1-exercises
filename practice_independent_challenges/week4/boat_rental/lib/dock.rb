@@ -14,4 +14,14 @@ class Dock
     def rental_log
         @rental_log
     end
+
+    def charge(boat)
+        # output = {
+        #     card_number: nil,
+        #     amount: nil
+        # } 
+        # output[:card_number] = @rental_log.find do |object, details|
+        #     object == renter
+        # end
+    end
 end
