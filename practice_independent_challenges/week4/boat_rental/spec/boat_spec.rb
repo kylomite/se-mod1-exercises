@@ -20,17 +20,25 @@ RSpec.describe Boat do
             expect(@kayak.price_per_hour).to eq (20)
         end
         it 'has an hours_rented attribute initilized at 0' do
-            expeect(@kayak.hours_rented).to eq 0
+            expect(@kayak.hours_rented).to eq 0
         end
     end
 
     describe '#add_hour' do
         it 'will increment the amount of hours in hours_rented by 1' do
-                
+
         end
     end
 
     describe '#hours_rented' do
-        it 'will return the value of hours_rented'
+        it 'has an hours_rented attribute initilized at 0' do
+            expect(@kayak.hours_rented).to eq 0
+        end
+        it 'will return the value of hours_rented' do
+            expect(@kayak.hours_rented).to eq 0
+            @kayak.add_hour
+            expect(@kayak.hours_rented).to eq 1
+
+        end
     end
 end
