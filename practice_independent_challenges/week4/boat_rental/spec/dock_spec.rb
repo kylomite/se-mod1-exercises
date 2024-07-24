@@ -56,6 +56,31 @@ RSpec.describe Dock do
 
             expect(@dock.rental_log.keys.length).to eq (3)
         end
-     
+
+        describe '#charge()' do
+            it 'will take a Boat as an argument' do 
+
+            end
+
+            it 'return a hash with 2 key/value pairs'do 
+
+            end
+
+            it 'shows the renters card number as a KVP'  do
+
+            end
+
+            it 'shows the amount that should be charged as a KVP'  do
+            
+            end
+            
+            it 'calculates amount value based on rental price and time rented' do
+
+            end
+            
+            it 'will not produce an amount higher than whats possible based on the docks max_rental_time' do
+                
+            end
+        end
      end
 end
