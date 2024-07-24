@@ -5,6 +5,7 @@ class Dock
         @name = name
         @max_rental_time = max_rental_time
         @rental_log = Hash.new(0)
+        @revenue = 0
     end
 
     def rent(boat, renter)
@@ -38,10 +39,11 @@ class Dock
 
     def return(boat)
         @rental_log.delete(boat)
-        price = calculate_total(boat)
+        @revenue += calculate_total(boat)
     end
 
     def log_hour
         @rental_log.each {|boat, renter| boat.add_hour}
     end
+
 end
