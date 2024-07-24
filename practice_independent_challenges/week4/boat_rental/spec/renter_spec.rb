@@ -14,10 +14,10 @@ RSpec.describe Renter do
             expect(@renter).to be_a (Renter)
         end
         it 'has a name attribute' do
-
+            expect(@renter.name).to eq ("Monkey D Luffy")
         end
         it 'has a credit_card_number attribute' do
-            
+            expect(@renter.credit_card_number).to eq ("1738173817381738")
         end
     end
 end
