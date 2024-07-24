@@ -16,12 +16,23 @@ class Dock
     end
 
     def charge(boat)
-        # output = {
-        #     card_number: nil,
-        #     amount: nil
-        # } 
-        # output[:card_number] = @rental_log.find do |object, details|
-        #     object == renter
-        # end
+        output = {
+            card_number: nil,
+            amount: nil
+        } 
+        output[:card_number] = @rental_log[boat].credit_card_number
+        output[:amount] = calculate_total(boat)
+        output
+    end
+
+    def calculate_total(boat)
+        #require'pry';binding.pry
+        total = 0
+        if @max_rental_time >= boat.hours_rented
+            total = boat.price_per_hour * boat.hours_rented
+        else
+            total = boat.price_per_hour * @max_rental_time
+        end
+        total
     end
 end

@@ -56,55 +56,62 @@ RSpec.describe Dock do
 
             expect(@dock.rental_log.keys.length).to eq (3)
         end
+     end
 
-        describe '#charge()' do
-            it 'return a hash with 2 key/value pairs'do 
+     describe '#charge()' do
+        it 'return a hash with 2 key/value pairs'do 
             #require'pry';binding.pry
-                @dock.rent(@kayak_1, @Luffy)
-                expect(@dock.charge(@kayak_1)).to be_a Hash
-                expect(@dock.charge(@kayak_1).keys.length).to eq 2
-            end
+            @dock.rent(@kayak_1, @Luffy)
+            expect(@dock.charge(@kayak_1)).to be_a Hash
+            expect(@dock.charge(@kayak_1).keys.length).to eq 2
+        end
 
-            it 'shows the renters card number as a KVP'  do
-                @dock.rent(@kayak_1, @Luffy)
-                @dock.rent(@Going_Merrry, @Zoro)
-                expect(@dock.charge(@kayak_1)[:card_number]).to eq ("1738173817381738")
-                expect(@dock.charge(@Going_Merrry)[:card_number]).to eq ("2407240724072407")
-            end
+        it 'shows the renters card number as a KVP'  do
+            @dock.rent(@kayak_1, @Luffy)
+            @dock.rent(@Going_Merrry, @Zoro)
+            expect(@dock.charge(@kayak_1)[:card_number]).to eq ("1738173817381738")
+            expect(@dock.charge(@Going_Merrry)[:card_number]).to eq ("2407240724072407")
+        end
 
-            it 'shows the amount that should be charged as a KVP'  do
-                @dock.rent(@kayak_1, @Luffy)
-                @dock.rent(@Going_Merrry, @Zoro)
-                expect(@dock.charge(@kayak_1)[:amount]).to eq (20)
-                expect(@dock.charge(@Going_Merrry)[:amount]).to eq (2000)
-            end
-            
-            it 'calculates amount value based on rental price and time rented' do
-                @dock.rent(@kayak_1, @Luffy)
-                @kayak_1.add_hour
-                @dock.rent(@Going_Merrry, @Zoro)
-                @Going_Merrry.add_hour
+        it 'shows the amount that should be charged as a KVP'  do
+            @dock.rent(@kayak_1, @Luffy)
+            @dock.rent(@Going_Merrry, @Zoro)
+            expect(@dock.charge(@kayak_1)[:amount]).to eq (0)
+            expect(@dock.charge(@Going_Merrry)[:amount]).to eq (0)
 
-                expect(@dock.charge(@kayak_1)[:amount]).to eq (20)
-                expect(@dock.charge(@Going_Merrry)[:amount]).to eq (2000)
-
-                @kayak_1.add_hour
-                @Going_Merrry.add_hour
-
-                expect(@dock.charge(@kayak_1)[:amount]).to eq (40)
-                expect(@dock.charge(@Going_Merrry)[:amount]).to eq (4000)
-            end
-            
-            it 'will not produce an amount higher than whats possible based on the docks max_rental_time' do
-                @dock.rent(@kayak_1, @Luffy)
-                4.times do
-                    @kayak_1.add_hour
-                end
-                expect(@dock.charge(@kayak_1)[:amount]).to eq (80)
-                kayak_1.add_hour
-
-                expect(@dock.charge(@kayak_1)[:amount]).to eq (80)
-            end
+            @kayak_1.add_hour
+            @Going_Merrry.add_hour
+            expect(@dock.charge(@kayak_1)[:amount]).to eq (20)
+            expect(@dock.charge(@Going_Merrry)[:amount]).to eq (2000)
         end
      end
+        
+     describe '#calculate_total()' do
+        it 'calculates amount value based on rental price and time rented' do
+            @dock.rent(@kayak_1, @Luffy)
+            @kayak_1.add_hour
+            @dock.rent(@Going_Merrry, @Zoro)
+            @Going_Merrry.add_hour
+
+            expect(@dock.calculate_total(@kayak_1)).to eq (20)
+            expect(@dock.calculate_total(@Going_Merrry)).to eq (2000)
+
+            @kayak_1.add_hour
+            @Going_Merrry.add_hour
+
+            expect(@dock.calculate_total(@kayak_1)).to eq (40)
+            expect(@dock.calculate_total(@Going_Merrry)).to eq (4000)
+        end
+        
+        it 'will not produce an amount higher than whats possible based on the docks max_rental_time' do
+            @dock.rent(@kayak_1, @Luffy)
+            4.times do
+                @kayak_1.add_hour
+            end
+            expect(@dock.calculate_total(@kayak_1)).to eq (80)
+            @kayak_1.add_hour
+
+            expect(@dock.calculate_total(@kayak_1)).to eq (80)
+        end
+    end
 end
