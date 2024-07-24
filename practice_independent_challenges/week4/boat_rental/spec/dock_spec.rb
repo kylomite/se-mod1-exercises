@@ -58,12 +58,10 @@ RSpec.describe Dock do
         end
 
         describe '#charge()' do
-            it 'will take a Boat as an argument' do 
-
-            end
-
             it 'return a hash with 2 key/value pairs'do 
-
+                @dock.rent(@kayak_1, @Luffy)
+                expect(@dock.charge(@kayak_1)).to be_a Hash
+                expect(@dock.charge(@kayak_1).keys.length).to eq 2
             end
 
             it 'shows the renters card number as a KVP'  do
@@ -79,7 +77,7 @@ RSpec.describe Dock do
             end
             
             it 'will not produce an amount higher than whats possible based on the docks max_rental_time' do
-                
+
             end
         end
      end
