@@ -133,4 +133,16 @@ RSpec.describe Dock do
             expect(@dock.return(@kayak_1)).to eq (60)
         end
     end
+
+    describe '#log_hour' do
+        it 'will increment the hours_rented attribute for every boat in the rental log' do
+            @dock.rent(@kayak_1, @Luffy)
+            @dock.log_hour
+            @dock.rent(@Going_Merry, @Zoro)
+            @dock.log_hour
+            
+            expect(@kayak_1.hours_rented).to eq (2)
+            expect(@Going_Merry.hours_rented).to eq (1)
+        end
+    end
 end
