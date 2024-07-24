@@ -17,7 +17,7 @@ RSpec.describe Boat do
             expect(@kayak.type).to eq (:kayak)
         end
         it 'has a price per hour' do
-            expect(@kayak).to eq (20)
+            expect(@kayak.price_per_hour).to eq (20)
         end
     end
 end
