@@ -124,5 +124,13 @@ RSpec.describe Dock do
             
             expect(@dock.rental_log.keys.length).to eq (1)
         end
+
+        it 'will charge the appropriate amount based on how long a boat was rented' do
+            @dock.rent(@kayak_1, @Luffy)
+            3.times do
+                @kayak_1.add_hour
+            end
+            expect(@dock.return(@kayak_1)).to eq (60)
+        end
     end
 end

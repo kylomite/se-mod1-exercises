@@ -35,4 +35,9 @@ class Dock
         end
         total
     end
+
+    def return(boat)
+        @rental_log.delete(boat)
+        price = calculate_total(boat)
+    end
 end
