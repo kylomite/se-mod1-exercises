@@ -40,4 +40,8 @@ class Dock
         @rental_log.delete(boat)
         price = calculate_total(boat)
     end
+
+    def log_hour
+        @rental_log.each {|boat, renter| boat.add_hour}
+    end
 end
