@@ -33,6 +33,12 @@ RSpec.describe Coloradolottery do
             age: 18,
             state_of_residence: 'CO',
             spending_money: 5})
+        @grace = Contestant.new({
+                first_name: 'Grace',
+                last_name: 'Hopper',
+                age: 20,
+                state_of_residence: 'CO',
+                spending_money: 20})
         @alexander.add_game_interest('Pick 4')
         @alexander.add_game_interest('Mega Millions')
         @frederick.add_game_interest('Mega Millions')
@@ -80,5 +86,27 @@ RSpec.describe Coloradolottery do
             expect(@lottery.can_register?(@benjamin, @mega_millions)).to eq(false) #NOT 18
             expect(@lottery.can_register?(@frederick, @cash_5)).to eq(false) #NOT RESIDENT OF CO
         end
+    end
+    
+    describe '#register_contestant()' do
+        it 'will add contestant as a value of a game key in registered_contestants' do
+            @lottery.register_contestant(@alexander, @pick_4)
+            expect(@lottery.registered_contestants).to eq({"Pick_4" => @alexander})
+        end
+
+        it 'will reject any contestant who cannot pass the #can_register() method' do
+            expect(@lottery.registered_contestants).to eq({})
+            @lottery.register_contestant(@alexander, @cash_5)
+
+            expect(@lottery.registered_contestants).to eq({})
+        end
+    end
+
+    describe '#eligible_contestant()' do
+    
+    end
+
+    describe '#charge_contesants()' do
+
     end
 end
