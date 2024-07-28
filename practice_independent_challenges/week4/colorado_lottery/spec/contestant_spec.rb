@@ -9,7 +9,7 @@ RSpec.describe Contestant do
                                       state_of_residence: 'CO',
                                       spending_money: 10})
     end
-    describe '#initialize' do
+    describe '#initialize()' do
         it 'should be an instance of Contestant' do
             expect(@contestant).to be_a(Contestant)
         end
