@@ -91,7 +91,8 @@ RSpec.describe Coloradolottery do
     describe '#register_contestant()' do
         it 'will add contestant as a value of a game key in registered_contestants' do
             @lottery.register_contestant(@alexander, @pick_4)
-            expect(@lottery.registered_contestants).to eq({"Pick_4" => @alexander})
+            binding.pry
+            expect(@lottery.registered_contestants).to eq({"Pick 4" => @alexander})
         end
 
         it 'will reject any contestant who cannot pass the #can_register() method' do

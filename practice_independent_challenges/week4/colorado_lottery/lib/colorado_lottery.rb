@@ -12,15 +12,21 @@ class Coloradolottery
         true : false
     end
 
-    def can_register?(name, game)
-        if interested_and_18?(name, game) == true
-            if game.national_drawing? == true
+    def can_register?(person, game)
+        if interested_and_18?(person, game) 
+            if game.national_drawing? 
                 true
             else 
-                true if name.state_of_residence == "CO"
+                true if person.state_of_residence == "CO"
             end
         else 
             false
+        end
+    end
+
+    def register_contestant(person, game)
+        if can_register?(person, game)
+            @registered_contestants[game.name] = person
         end
     end
 end
