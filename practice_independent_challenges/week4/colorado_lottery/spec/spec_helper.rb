@@ -3,5 +3,5 @@ RSpec.configure do |config|
 end
 
 require 'pry'
-require './spec/contestant_spec'
-require './spec/game_spec'
+require './lib/contestant'
+require './lib/game'
