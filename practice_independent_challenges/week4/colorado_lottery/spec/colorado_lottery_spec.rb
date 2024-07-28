@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe colorado_lottery do
+RSpec.describe Coloradolottery do
     before(:each) do
-        @lottery = ColoradoLottery.new
+        @lottery = Coloradolottery.new
         @pick_4 = Game.new('Pick 4', 2)
         @mega_millions = Game.new('Mega Millions', 5, true)
         @cash_5 = Game.new('Cash 5', 1)
@@ -36,7 +36,7 @@ RSpec.describe colorado_lottery do
     end
     describe '#initialize()' do
         it 'is an instance of  Colorado Lottery' do
-            expect(@lottery).to be_a(coloradolottery)
+            expect(@lottery).to be_a(Coloradolottery)
         end
 
         it 'is intitiated with a registered_contestants hash' do
