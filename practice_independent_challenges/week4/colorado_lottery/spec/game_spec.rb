@@ -20,7 +20,7 @@ RSpec.describe Game do
         end
 
         it 'has a national_drawing boolean' do
-            expect(@mega_millions.national_drawing).to eq(true)
+            expect(@mega_millions.national_drawing?).to eq(true)
         end
     end
 end
