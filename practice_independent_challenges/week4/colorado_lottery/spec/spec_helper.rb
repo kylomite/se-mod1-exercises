@@ -3,4 +3,4 @@ RSpec.configure do |config|
 end
 
 require 'pry'
-require './contestant_spec'
+require './spec/contestant_spec'
