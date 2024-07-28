@@ -33,7 +33,14 @@ RSpec.describe Coloradolottery do
             age: 18,
             state_of_residence: 'CO',
             spending_money: 5})
+        @alexander.add_game_interest('Pick 4')
+        @alexander.add_game_interest('Mega Millions')
+        @frederick.add_game_interest('Mega Millions')
+        @winston.add_game_interest('Cash 5')
+        @winston.add_game_interest('Mega Millions')
+        @benjamin.add_game_interest('Mega Millions')
     end
+
     describe '#initialize()' do
         it 'is an instance of  Colorado Lottery' do
             expect(@lottery).to be_a(Coloradolottery)
@@ -49,6 +56,29 @@ RSpec.describe Coloradolottery do
 
         it 'is intitiated with a current_contestants hash' do
             expect(@lottery.current_contestants).to eq({})
+        end
+    end
+
+    describe '#interested_and_18?()' do
+        it 'it returns true if a contestant is interested and 18 or older' do
+            expect(@lottery.interested_and_18?(@alexander, @pick_4)).to eq(true)
+        end
+        
+        it 'it returns false if a contestant is either not interested or under 18' do
+            expect(@lottery.interested_and_18?(@benjamin, @mega_millions)).to eq(false) # NOT >= 18
+            expect(@lottery.interested_and_18?(@alexander, @cash_5)) # NOT INTERESTED
+        end
+    end
+
+    describe '#can_register?' do
+        it 'will return true if the contestant lives in the under a games juristiction && is intersted' do
+            expect(@lottery.can_register?(@alexander, @pick_4)).to eq(true)
+            expect(@lottery.can_register?(@frederick, @mega_millions)).to eq(true)
+        end
+        it 'will return false if the contestant doesnt live in the under a games juristiction' do
+            expect(@lottery.can_register?(@alexander, @cash_5)).to eq(false) # NOT INTERESTED
+            expect(@lottery.can_register?(@benjamin, @mega_millions)).to eq(false) #NOT 18
+            expect(@lottery.can_register?(@frederick, @cash_5)).to eq(false) #NOT RESIDENT OF CO
         end
     end
 end
