@@ -3,6 +3,7 @@ require './lib/game'
 
 RSpec.describe Game do
     before(:each) do
+        @pick_4 = Game.new('Pick 4', 2)
         @mega_millions = Game.new('Mega Millions', 5, true)
     end
 
@@ -21,6 +22,7 @@ RSpec.describe Game do
 
         it 'has a national_drawing boolean' do
             expect(@mega_millions.national_drawing?).to eq(true)
+            expect(@pick_4.national_drawing?).to eq(false)
         end
     end
 end
