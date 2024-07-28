@@ -54,7 +54,10 @@ RSpec.describe Contestant do
     describe '#add_game_interest()' do
         it 'adds the argument to the list of game interests' do
             mega_millions = Game.new('Mega Millions', 5, true)
-            expect(@alexander.add_game_interest(mega_millions))
+            pick_4 = Game.new('Pick 4', 2)
+            @alexander.add_game_interest(mega_millions)
+            @alexander.add_game_interest(pick_4)
+            expect(@alexander.game_interests).to eq([mega_millions, pick_4])
         end
     end
 end
