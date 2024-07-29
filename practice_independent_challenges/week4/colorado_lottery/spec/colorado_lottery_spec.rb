@@ -114,7 +114,7 @@ RSpec.describe Coloradolottery do
             luffy.add_game_interest('Mega Millions')
             @lottery.register_contestant(@frederick, @mega_millions)
             @lottery.register_contestant(luffy, @mega_millions)
-            #binding.pry
+
             expect(@lottery.eligible_contestants(@mega_millions)).to eq([@frederick])
         end
     
@@ -123,12 +123,12 @@ RSpec.describe Coloradolottery do
     describe '#charge_contesants()' do
         it 'will remove the cost of a game from every eligible contestants spending money' do
             @lottery.register_contestant(@frederick, @mega_millions)
-            @lottery.charge_contesants(@frederick)
             @lottery.register_contestant(@winston, @mega_millions)
-            @lottery.charge_contesants(@winston)
+            binding.pry
+            @lottery.charge_contesants(@mega_millions)
             
-            expect(@fredrick.spending_money).to eq 19
-            expect(@fredrick.spending_money).to eq 4
+            expect(@frederick.spending_money).to eq 19
+            expect(@frederick.spending_money).to eq 4
         end
     end
 end
