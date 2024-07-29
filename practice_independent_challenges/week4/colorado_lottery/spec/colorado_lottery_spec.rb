@@ -91,7 +91,6 @@ RSpec.describe Coloradolottery do
     describe '#register_contestant()' do
         it 'will add contestant as a value of a game key in registered_contestants' do
             @lottery.register_contestant(@alexander, @pick_4)
-            binding.pry
             expect(@lottery.registered_contestants).to eq({"Pick 4" => @alexander})
         end
 
@@ -103,7 +102,21 @@ RSpec.describe Coloradolottery do
         end
     end
 
-    describe '#eligible_contestant()' do
+    describe '#eligible_contestants()' do
+        it 'will return an array of contestants who have registered and have enough money to play the game' do
+            expect(@lottery.eligible_contestants(@mega_millions)).to eq([])
+            luffy = Contestant.new({
+                first_name: 'Monkey',
+                last_name: 'Luffy',
+                age: 18,
+                state_of_residence: 'East Blue',
+                spending_money: 0})
+            luffy.add_game_interest('Mega Millions')
+            @lottery.register_contestant(@frederick, @mega_millions)
+            @lottery.register_contestant(luffy, @mega_millions)
+            
+            expect(@lottery.eligible_contestants(@mega_millions)).to eq([@frederick])
+        end
     
     end
 
