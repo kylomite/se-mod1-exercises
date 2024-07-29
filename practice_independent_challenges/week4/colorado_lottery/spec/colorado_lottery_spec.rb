@@ -105,7 +105,6 @@ RSpec.describe Coloradolottery do
 
     describe '#eligible_contestants()' do
         it 'will return an array of contestants who have registered and have enough money to play the game' do
-            #expect(@lottery.eligible_contestants(@mega_millions)).to eq([])
             luffy = Contestant.new({
                 first_name: 'Monkey',
                 last_name: 'Luffy',
@@ -122,6 +121,14 @@ RSpec.describe Coloradolottery do
     end
 
     describe '#charge_contesants()' do
-
+        it 'will remove the cost of a game from every eligible contestants spending money' do
+            @lottery.register_contestant(@frederick, @mega_millions)
+            @lottery.charge_contesants(@frederick)
+            @lottery.register_contestant(@winston, @mega_millions)
+            @lottery.charge_contesants(@winston)
+            
+            expect(@fredrick.spending_money).to eq 19
+            expect(@fredrick.spending_money).to eq 4
+        end
     end
 end
