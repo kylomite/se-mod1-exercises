@@ -14,4 +14,8 @@ class Activity
             @participants[name] += money_paid
         end
     end
+    
+    def total_cost
+        @participants.sum {|name, money_paid| money_paid}
+    end
 end
