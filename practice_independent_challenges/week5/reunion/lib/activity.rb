@@ -22,4 +22,12 @@ class Activity
     def split
       total_cost / @participants.keys.length
     end
+
+    def owed
+        output = {}
+        @participants.each do |name, money_paid|
+            output[name] = split - money_paid
+        end
+        output
+    end
 end
