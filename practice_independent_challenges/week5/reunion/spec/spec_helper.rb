@@ -6,3 +6,4 @@ RSpec.configure do |config|
 end
 
 require './lib/activity'
+require './lib/reunion'
