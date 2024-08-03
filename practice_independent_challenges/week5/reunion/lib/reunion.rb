@@ -33,4 +33,13 @@ class Reunion
         end
         output
     end
+
+    def print_participants_dues
+        data = calculate_total_owed
+        output = ""
+        data.each do |name, dues|
+        output << ("#{name} owes $#{dues}\n")
+        end
+        output
+    end
 end

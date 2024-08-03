@@ -114,15 +114,8 @@ RSpec.describe Activity do
             @reunion.add_activity(activity_2)
             @reunion.add_activity(activity_3)
 
-            expected = "Summary:
-            Luffy owes $21,
-
-            Zoro owes $55,
-
-            Nami owes $-94,
-
-            Usopp owes $14
-            "
+            expected = "Luffy owes $21\nZoro owes $55\nNami owes $-94\nUsopp owes $14\n"
+            expect(@reunion.print_participants_dues).to eq(expected)
         end
     end
 end
