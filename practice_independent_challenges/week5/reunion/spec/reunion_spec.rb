@@ -18,4 +18,12 @@ RSpec.describe Activity do
             expect(@reunion.activities).to eq([])
         end
     end
+
+    describe 'add_activity()' do
+        it 'adds argument to activities array' do
+            activity_1 = Activity.new("Brunch")
+            @reunion.add_activity(activity_1)
+            expect(@reunion.activities).to eq(activity_1)
+        end
+    end
 end
