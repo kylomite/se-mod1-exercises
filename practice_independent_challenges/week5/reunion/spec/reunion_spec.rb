@@ -91,6 +91,38 @@ RSpec.describe Activity do
     end
 
     describe '#print_participants_dues' do
+        it 'returns a summary of each participants name and what they owe, separated by a line break.' do
+            activity_1 = Activity.new("Brunch")
+            activity_1.add_participant("Luffy", 15)
+            activity_1.add_participant("Zoro", 1)
+            activity_1.add_participant("Nami", 50)
+            activity_1.add_participant("Usopp", 15)
 
+            activity_2 = Activity.new("Put-put")
+            activity_2.add_participant("Luffy", 10)
+            activity_2.add_participant("Zoro", 0)
+            activity_2.add_participant("Nami", 75)
+            activity_2.add_participant("Usopp", 12)
+
+            activity_3 = Activity.new("Bounce House")
+            activity_3.add_participant("Luffy", 20)
+            activity_3.add_participant("Zoro", 10)
+            activity_3.add_participant("Nami", 35)
+            activity_3.add_participant("Usopp", 25)
+
+            @reunion.add_activity(activity_1)
+            @reunion.add_activity(activity_2)
+            @reunion.add_activity(activity_3)
+
+            expected = "Summary:
+            Luffy owes $21,
+
+            Zoro owes $55,
+
+            Nami owes $-94,
+
+            Usopp owes $14
+            "
+        end
     end
 end
