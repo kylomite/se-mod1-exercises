@@ -22,6 +22,8 @@ RSpec.describe Activity do
         it 'adds args as KVP in participants hash'  do
             @activity.add_participant("Maria", 20)
             expect(@activity.participants).to eq({"Maria" => 20})
+            @activity.add_participant("Maria", 50)
+            expect(@activity.participants).to eq({"Maria" => 70})
         end
     end
 end
