@@ -28,4 +28,13 @@ RSpec.describe Activity do
             expect(@activity.participants).to eq({"Maria" => 70, "Luther" => 40})
         end
     end
+
+    describe '#total_cost' do
+        it 'returns the sum of all values in participants hash' do
+            @activity.add_participant("Maria", 20)
+            @activity.add_participant("Luffy", 20)
+            @activity.add_participant("James", 20)
+            expect(@activity.total_cost).to eq(60)
+        end
+    end
 end
