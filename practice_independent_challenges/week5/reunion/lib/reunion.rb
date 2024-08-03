@@ -17,4 +17,20 @@ class Reunion
         end
         total  
     end
+
+    def calculate_total_owed
+        output = {}
+        @activities.each do |activity|
+            activity.participants.each do |name, money_paid|
+                if !(output.keys.include?(name))
+                    output[name] = 0
+                end
+            end
+            temp_counter = activity.owed
+            temp_counter.each do |individual, money_due|
+                output[individual] += money_due
+            end
+        end
+        output
+    end
 end
