@@ -27,7 +27,7 @@ RSpec.describe Activity do
         end
     end
 
-    describe 'total_cost' do
+    describe 'total_reunion_cost' do
         it 'returns the total cost of all activites in the event' do
             activity_1 = Activity.new("Brunch")
             activity_1.add_participant("Luffy", 15)
@@ -36,22 +36,22 @@ RSpec.describe Activity do
             activity_1.add_participant("Usopp", 15)
 
             activity_2 = Activity.new("Put-put")
-            activity_1.add_participant("Luffy", 10)
-            activity_1.add_participant("Zoro", 0)
-            activity_1.add_participant("Nami", 75)
-            activity_1.add_participant("Usopp", 12)
+            activity_2.add_participant("Luffy", 10)
+            activity_2.add_participant("Zoro", 0)
+            activity_2.add_participant("Nami", 75)
+            activity_2.add_participant("Usopp", 12)
 
             activity_3 = Activity.new("Bounce House")
-            activity_1.add_participant("Luffy", 20)
-            activity_1.add_participant("Zoro", 10)
-            activity_1.add_participant("Nami", 35)
-            activity_1.add_participant("Usopp", 25)
+            activity_3.add_participant("Luffy", 20)
+            activity_3.add_participant("Zoro", 10)
+            activity_3.add_participant("Nami", 35)
+            activity_3.add_participant("Usopp", 25)
 
             @reunion.add_activity(activity_1)
             @reunion.add_activity(activity_2)
             @reunion.add_activity(activity_3)
 
-            expect(@reunion.total_cost).to eq(268)
+            expect(@reunion.total_reunion_cost).to eq(268)
         end
     end
 end
