@@ -47,6 +47,15 @@ RSpec.describe Activity do
     end
 
     describe '#owed' do
-
+        it 'returns a hash with each KVP repersenting a participant and a value' do
+            @activity.add_participant("Maria", 20)
+            @activity.add_participant("Luffy", 40)
+            expect(@activity.owed).to eq({"Maria" => Integer, "Luther" => Integer})
+        end
+        it 'should calculate the difference between what a participant paid and the split amount as the values in the KVPs' do
+            @activity.add_participant("Maria", 20)
+            @activity.add_participant("Luffy", 40)
+            expect(@activity.owed).to eq({"Maria" => 10, "Luther" => -10})
+        end
     end
 end
