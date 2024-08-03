@@ -37,4 +37,16 @@ RSpec.describe Activity do
             expect(@activity.total_cost).to eq(60)
         end
     end
+
+    describe '#split' do
+        it 'should return the total cost divided by the number of participants' do
+            @activity.add_participant("Maria", 20)
+            @activity.add_participant("Luffy", 40)
+            expect(@activity.split).to eq(30)
+        end
+    end
+
+    describe '#owed' do
+
+    end
 end
