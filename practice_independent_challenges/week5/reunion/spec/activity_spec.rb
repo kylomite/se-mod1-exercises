@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-Rspec.describe Activity do
+RSpec.describe Activity do
     before(:each) do
         @activity = Activity.new("Brunch")    
     end
